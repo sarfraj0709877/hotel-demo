@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Royal Stay Hotel</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f7f7f7;
+    color:#222;
+}
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid #eee;
+}
+
+.navbar{
+    max-width:1200px;
+    margin:auto;
+    height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:800;
+    color:#171717;
+}
+
+.logo span{
+    color:#b88a44;
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#222;
+    font-size:15px;
+}
+
+.nav-links a:hover{
+    color:#b88a44;
+}
+
+.menu-btn{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    min-height:720px;
+    margin-top:72px;
+    background:
+    linear-gradient(rgba(0,0,0,.48),rgba(0,0,0,.48)),
+    url("https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1800&q=85");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    padding:30px 20px;
+}
+
+.hero-content{
+    max-width:800px;
+}
+
+.hero small{
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+.hero h1{
+    font-size:58px;
+    margin:18px 0;
+}
+
+.hero p{
+    font-size:19px;
+    line-height:1.6;
+}
+
+.btn{
+    display:inline-block;
+    border:none;
+    cursor:pointer;
+    background:#b88a44;
+    color:white;
+    padding:14px 25px;
+    border-radius:7px;
+    font-size:15px;
+    font-weight:600;
+    text-decoration:none;
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    background:#987033;
+}
+
+.hero .btn{
+    margin-top:28px;
+}
+
+/* BOOKING BAR */
+
+.booking-box{
+    max-width:1050px;
+    margin:-55px auto 70px;
+    position:relative;
+    background:white;
+    border-radius:14px;
+    box-shadow:0 12px 40px rgba(0,0,0,.15);
+    padding:25px;
+}
+
+.booking-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr auto;
+    gap:15px;
+}
+
+.field label{
+    display:block;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.field input,
+.field select{
+    width:100%;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:7px;
+    outline:none;
+    background:white;
+}
+
+/* GENERAL */
+
+section{
+    padding:75px 20px;
+}
+
+.container{
+    max-width:1150px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title span{
+    color:#b88a44;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.section-title h2{
+    font-size:38px;
+    margin-top:10px;
+}
+
+/* ROOMS */
+
+.rooms{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.room{
+    background:white;
+    border-radius:13px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.room img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.room-content{
+    padding:22px;
+}
+
+.room-content h3{
+    font-size:22px;
+    margin-bottom:8px;
+}
+
+.room-content p{
+    color:#777;
+    line-height:1.5;
+}
+
+.price{
+    margin:17px 0;
+    font-size:21px;
+    font-weight:bold;
+}
+
+.price span{
+    color:#777;
+    font-size:13px;
+    font-weight:normal;
+}
+
+/* AMENITIES */
+
+.amenities{
+    background:#fff;
+}
+
+.amenity-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.amenity{
+    background:#fafafa;
+    border:1px solid #eee;
+    padding:28px 15px;
+    text-align:center;
+    border-radius:10px;
+}
+
+.amenity-icon{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.amenity h3{
+    font-size:16px;
+}
+
+/* GALLERY */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.gallery img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+/* ABOUT */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.about img{
+    width:100%;
+    border-radius:14px;
+}
+
+.about-text h2{
+    font-size:40px;
+    margin:12px 0 20px;
+}
+
+.about-text p{
+    color:#666;
+    line-height:1.8;
+}
+
+/* REVIEWS */
+
+.reviews{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.review{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.stars{
+    color:#d39b43;
+    margin-bottom:12px;
+}
+
+.review p{
+    color:#666;
+    line-height:1.6;
+}
+
+.review strong{
+    display:block;
+    margin-top:18px;
+}
+
+/* CONTACT */
+
+.contact{
+    background:#171717;
+    color:white;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+}
+
+.contact p{
+    color:#bbb;
+    margin:12px 0;
+}
+
+.map{
+    width:100%;
+    height:280px;
+    border:0;
+    border-radius:12px;
+}
+
+/* FOOTER */
+
+footer{
+    background:#0d0d0d;
+    color:#aaa;
+    text-align:center;
+    padding:25px;
+    font-size:14px;
+}
+
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    z-index:3000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.65);
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal-box{
+    background:white;
+    width:100%;
+    max-width:520px;
+    border-radius:14px;
+    padding:30px;
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    right:20px;
+    top:15px;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.modal-box h2{
+    margin-bottom:20px;
+}
+
+.form-group{
+    margin-bottom:15px;
+}
+
+.form-group label{
+    display:block;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:7px;
+}
+
+.success{
+    display:none;
+    text-align:center;
+    padding:20px 0;
+}
+
+.success .check{
+    font-size:55px;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:72px;
+        left:0;
+        width:100%;
+        background:white;
+        flex-direction:column;
+        padding:20px;
+        gap:18px;
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .hero{
+        min-height:620px;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .booking-grid{
+        grid-template-columns:1fr;
+    }
+
+    .rooms{
+        grid-template-columns:1fr;
+    }
+
+    .amenity-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    .reviews{
+        grid-template-columns:1fr;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:500px){
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .section-title h2{
+        font-size:30px;
+    }
+
+    .amenity-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header>
+
+<div class="navbar">
+
+<div class="logo">
+Royal <span>Stay</span>
+</div>
+
+<ul class="nav-links" id="navLinks">
+<li><a href="#home">Home</a></li>
+<li><a href="#rooms">Rooms</a></li>
+<li><a href="#amenities">Amenities</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+</div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<small>Welcome to Royal Stay</small>
+
+<h1>Luxury Stay. Memorable Experience.</h1>
+
+<p>
+Experience comfort, elegance and warm hospitality
+in the heart of the city.
+</p>
+
+<a href="#booking" class="btn">
+Check Availability
+</a>
+
+</div>
+
+</section>
+
+
+<!-- BOOKING SEARCH -->
+
+<div class="booking-box" id="booking">
+
+<div class="booking-grid">
+
+<div class="field">
+<label>CHECK-IN</label>
+<input type="date" id="checkin">
+</div>
+
+<div class="field">
+<label>CHECK-OUT</label>
+<input type="date" id="checkout">
+</div>
+
+<div class="field">
+<label>GUESTS</label>
+
+<select id="guests">
+<option>1 Guest</option>
+<option>2 Guests</option>
+<option>3 Guests</option>
+<option>4 Guests</option>
+<option>5+ Guests</option>
+</select>
+
+</div>
+
+<button class="btn" onclick="checkAvailability()">
+Search
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ROOMS -->
+
+<section id="rooms">
+
+<div class="container">
+
+<div class="section-title">
+<span>Our Rooms</span>
+<h2>Choose Your Perfect Room</h2>
+</div>
+
+<div class="rooms">
+
+<div class="room">
+
+<img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1000&q=80">
+
+<div class="room-content">
+
+<h3>Deluxe Room</h3>
+
+<p>
+King-size bed, AC, smart TV, Wi-Fi and modern bathroom.
+</p>
+
+<div class="price">
+₹1,499 <span>/ night</span>
+</div>
+
+<button class="btn" onclick="openBooking('Deluxe Room','1499')">
+Book Room
+</button>
+
+</div>
+</div>
+
+
+<div class="room">
+
+<img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=80">
+
+<div class="room-content">
+
+<h3>Premium Room</h3>
+
+<p>
+Spacious room with premium interiors and city view.
+</p>
+
+<div class="price">
+₹2,199 <span>/ night</span>
+</div>
+
+<button class="btn" onclick="openBooking('Premium Room','2199')">
+Book Room
+</button>
+
+</div>
+</div>
+
+
+<div class="room">
+
+<img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=80">
+
+<div class="room-content">
+
+<h3>Family Suite</h3>
+
+<p>
+Large suite designed for families and longer stays.
+</p>
+
+<div class="price">
+₹2,999 <span>/ night</span>
+</div>
+
+<button class="btn" onclick="openBooking('Family Suite','2999')">
+Book Room
+</button>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</section>
+
+
+<!-- AMENITIES -->
+
+<section id="amenities" class="amenities">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>Hotel Facilities</span>
+
+<h2>Everything You Need</h2>
+
+</div>
+
+<div class="amenity-grid">
+
+<div class="amenity">
+<div class="amenity-icon">📶</div>
+<h3>Free Wi-Fi</h3>
+</div>
+
+<div class="amenity">
+<div class="amenity-icon">🚗</div>
+<h3>Free Parking</h3>
+</div>
+
+<div class="amenity">
+<div class="amenity-icon">❄️</div>
+<h3>Air Conditioning</h3>
+</div>
+
+<div class="amenity">
+<div class="amenity-icon">🍽️</div>
+<h3>Restaurant</h3>
+</div>
+
+<div class="amenity">
+<div class="amenity-icon">🛎️</div>
+<h3>Room Service</h3>
+</div>
+
+<div class="amenity">
+<div class="amenity-icon">📺</div>
+<h3>Smart TV</h3>
+</div>
+
+<div class="amenity">
+<div class="amenity-icon">🛡️</div>
+<h3>24/7 Security</h3>
+</div>
+
+<div class="amenity">
+<div class="amenity-icon">🏊</div>
+<h3>Swimming Pool</h3>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section>
+
+<div class="container">
+
+<div class="about">
+
+<img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1200&q=80">
+
+<div class="about-text">
+
+<span>About Royal Stay</span>
+
+<h2>Your Home Away From Home</h2>
+
+<p>
+Royal Stay offers comfortable rooms, modern facilities
+and friendly hospitality for business and leisure travelers.
+Our goal is to make every guest feel at home.
+</p>
+
+<br>
+
+<a href="#contact" class="btn">
+Contact Hotel
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>Gallery</span>
+
+<h2>Take A Look Inside</h2>
+
+</div>
+
+<div class="gallery">
+
+<img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=900&q=80">
+
+<img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80">
+
+<img src="https://images.unsplash.com/photo-1595576508898-0ad5c879a061?auto=format&fit=crop&w=900&q=80">
+
+<img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=900&q=80">
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- REVIEWS -->
+
+<section>
+
+<div class="container">
+
+<div class="section-title">
+
+<span>Guest Reviews</span>
+
+<h2>What Our Guests Say</h2>
+
+</div>
+
+<div class="reviews">
+
+<div class="review">
+
+<div class="stars">★★★★★</div>
+
+<p>
+"Very clean rooms and friendly staff. Had a wonderful stay."
+</p>
+
+<strong>— Rahul Sharma</strong>
+
+</div>
+
+
+<div class="review">
+
+<div class="stars">★★★★★</div>
+
+<p>
+"Great location and excellent service. Would definitely visit again."
+</p>
+
+<strong>— Priya Verma</strong>
+
+</div>
+
+
+<div class="review">
+
+<div class="stars">★★★★★</div>
+
+<p>
+"Comfortable rooms and good food. Perfect for a family trip."
+</p>
+
+<strong>— Aman Singh</strong>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+<div class="container">
+
+<div class="contact-grid">
+
+<div>
+
+<h2>Contact Royal Stay</h2>
+
+<p>📍 Main Road, City Center, India</p>
+
+<p>📞 +91 98765 43210</p>
+
+<p>✉️ booking@royalstay.com</p>
+
+<br>
+
+<a
+class="btn"
+href="https://wa.me/919876543210?text=Hello%20Royal%20Stay,%20I%20want%20to%20book%20a%20room."
+target="_blank">
+WhatsApp Booking
+</a>
+
+</div>
+
+<div>
+
+<iframe
+class="map"
+src="https://www.google.com/maps?q=New%20Delhi%20India&output=embed">
+</iframe>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026 Royal Stay Hotel. All Rights Reserved.
+
+</footer>
+
+
+<!-- BOOKING MODAL -->
+
+<div class="modal" id="bookingModal">
+
+<div class="modal-box">
+
+<div class="close" onclick="closeBooking()">×</div>
+
+<div id="bookingForm">
+
+<h2>Book Your Stay</h2>
+
+<p id="selectedRoom" style="color:#777;margin-bottom:20px;"></p>
+
+<div class="form-group">
+
+<label>Your Name</label>
+
+<input
+type="text"
+id="customerName"
+placeholder="Enter your name">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Phone Number</label>
+
+<input
+type="tel"
+id="customerPhone"
+placeholder="Enter phone number">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Check-in</label>
+
+<input type="date" id="modalCheckin">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Check-out</label>
+
+<input type="date" id="modalCheckout">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Guests</label>
+
+<select id="modalGuests">
+
+<option>1 Guest</option>
+<option>2 Guests</option>
+<option>3 Guests</option>
+<option>4 Guests</option>
+<option>5+ Guests</option>
+
+</select>
+
+</div>
+
+<button class="btn" style="width:100%;" onclick="confirmBooking()">
+
+Confirm Booking
+
+</button>
+
+</div>
+
+
+<div class="success" id="successMessage">
+
+<div class="check">✅</div>
+
+<h2>Booking Request Sent!</h2>
+
+<p style="margin-top:10px;color:#666;">
+Thank you. The hotel will contact you shortly.
+</p>
+
+<br>
+
+<button class="btn" onclick="closeBooking()">
+Close
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* MOBILE MENU */
+
+function toggleMenu(){
+
+document
+.getElementById("navLinks")
+.classList.toggle("active");
+
+}
+
+
+/* SET TODAY AS MINIMUM DATE */
+
+const today = new Date().toISOString().split("T")[0];
+
+document.getElementById("checkin").min = today;
+document.getElementById("checkout").min = today;
+
+
+/* CHECK AVAILABILITY */
+
+function checkAvailability(){
+
+const checkin =
+document.getElementById("checkin").value;
+
+const checkout =
+document.getElementById("checkout").value;
+
+if(!checkin || !checkout){
+
+alert("Please select check-in and check-out dates.");
+
+return;
+
+}
+
+if(checkout <= checkin){
+
+alert("Check-out date must be after check-in date.");
+
+return;
+
+}
+
+document.getElementById("rooms")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+alert(
+"Rooms are available for your selected dates!"
+);
+
+}
+
+
+/* OPEN BOOKING */
+
+let selectedRoom = "";
+let selectedPrice = "";
+
+function openBooking(room,price){
+
+selectedRoom = room;
+selectedPrice = price;
+
+document.getElementById("selectedRoom").innerHTML =
+"<strong>"+room+"</strong> — ₹"+price+" / night";
+
+document.getElementById("bookingModal").style.display =
+"flex";
+
+}
+
+
+/* CLOSE BOOKING */
+
+function closeBooking(){
+
+document.getElementById("bookingModal").style.display =
+"none";
+
+document.getElementById("bookingForm").style.display =
+"block";
+
+document.getElementById("successMessage").style.display =
+"none";
+
+}
+
+
+/* CONFIRM BOOKING */
+
+async function confirmBooking(){
+
+const name =
+document.getElementById("customerName").value.trim();
+
+const phone =
+document.getElementById("customerPhone").value.trim();
+
+const checkin =
+document.getElementById("modalCheckin").value;
+
+const checkout =
+document.getElementById("modalCheckout").value;
+
+const guests =
+document.getElementById("modalGuests").value;
+
+if(!name || !phone || !checkin || !checkout){
+
+alert("Please fill all the details.");
+
+return;
+
+}
+
+if(checkout <= checkin){
+
+alert("Check-out date must be after check-in date.");
+
+return;
+
+}
+
+const response = await fetch("http://localhost:3000/booking",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+room:selectedRoom,
+price:selectedPrice,
+name:name,
+phone:phone,
+checkin:checkin,
+checkout:checkout,
+guests:guests
+
+})
+
+});
+
+const data = await response.json();
+
+if(data.success){
+
+document.getElementById("bookingForm").style.display =
+"none";
+
+document.getElementById("successMessage").style.display =
+"block";
+
+
+}
+
+
+/* CLOSE MODAL WHEN CLICKING OUTSIDE */
+
+window.onclick = function(event){
+
+const modal =
+document.getElementById("bookingModal");
+
+if(event.target === modal){
+
+closeBooking();
+
+}
+
+}
+}
+</script>
+
+</body>
+</html>
